@@ -1,0 +1,12 @@
+{
+  "name": "criacao_de_uma_apliacao_em_nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Leonardo <leonardojosantos@gmail.com>",
+  "license": "MIT"
+}
