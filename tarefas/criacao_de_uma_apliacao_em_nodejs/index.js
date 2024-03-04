@@ -17,13 +17,14 @@ function programaPrincipal() {
     // - Peça o caminho de um arquivo txt do seu computador;
     leitor.question('\nDigite o caminho do arquivo [exemplo.txt]: ', (caminho_do_arquivo) => {
 
-        const caminho = caminho_do_arquivo.toLowerCase();
+        // otimizado trecho
+        const caminho_tratado = caminho_do_arquivo.replaceAll(' ', '').toLowerCase().trim();
 
         // - Quanto tempo demorou a execução;
         console.time('-> Quanto tempo demorou a execução');
 
         async function lerArquivo() {
-            await fileSystem.readFile(caminho, 'utf8', (erro, dados) => {
+            await fileSystem.readFile(caminho_tratado, 'utf8', (erro, dados) => {
                 if (erro) {
                     console.log('-> erro, arquivo não encontrado!');
                     leitor.close();
@@ -55,12 +56,13 @@ function programaPrincipal() {
 
                 const soma_numeros = numeros_arquivo.reduce((acumulador, valor) => acumulador + valor);
 
+                // otimizado trecho
                 const resumo = {
-                    total_linhas_somente_numeros: total_linhas_somente_numeros,
-                    total_somente_numeros_na_linha: total_somente_numeros_na_linha,
-                    total_linhas_texto: total_linhas_texto,
-                    soma_numeros: soma_numeros,
-                    caminho_do_arquivo: caminho_do_arquivo,
+                    total_linhas_somente_numeros,
+                    total_somente_numeros_na_linha,
+                    total_linhas_texto,
+                    soma_numeros,
+                    caminho_tratado,
                 };
 
                 // O resumo deverá ser disparado por EVENTO:
@@ -79,7 +81,7 @@ function programaPrincipal() {
 }
 
 function exibirResumo(resumo) {
-    console.log(`\n-> Resumo do arquivo '${resumo.caminho_do_arquivo}'`);
+    console.log(`\n-> Resumo do arquivo '${resumo.caminho_tratado}'`);
     console.table([
         ['Conte quantas linhas possuem somente números', resumo.total_linhas_somente_numeros],
         ['Soma dos números destas linhas', resumo.total_somente_numeros_na_linha],
@@ -91,12 +93,14 @@ function exibirResumo(resumo) {
 
 function solicitarPerguntaNovaExecucao() {
     leitor.question('\nQuer executar novamente [S/N]? ', (resposta) => {
-        const resposta_em_maiuscula = resposta.toUpperCase();
 
-        if (resposta_em_maiuscula === 'S' || resposta_em_maiuscula === 'SIM') {
+        // otimizado trecho
+        const resposta_tratada = resposta.replaceAll(' ', '').toUpperCase().trim();
+
+        if (resposta_tratada === 'S' || resposta_tratada === 'SIM') {
             eventEmitter.emit('recebeuRespostaSim');
         }
-        else if (resposta_em_maiuscula === 'N' || resposta_em_maiuscula === 'NAO' || resposta_em_maiuscula === 'NÃO') {
+        else if (resposta_tratada === 'N' || resposta_tratada === 'NAO' || resposta_tratada === 'NÃO') {
             eventEmitter.emit('recebeuRespostaNao');
         }
         else {
