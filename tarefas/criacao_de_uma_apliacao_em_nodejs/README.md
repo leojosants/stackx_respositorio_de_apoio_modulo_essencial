@@ -1,4 +1,4 @@
-# Criação de uma apliação em Node.Js
+# Criação de uma aplicação em Node.Js
 
 ## Objetivos
 
