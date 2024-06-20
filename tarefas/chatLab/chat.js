@@ -93,11 +93,11 @@ executarProgramaPrincipal();
 // --------------------------------
 // Não remover estas linhas
 // --------------------------------
-module.exports =
-{
-  adicionarMensagem,
-  formatarMensagens,
-  atualizarHTML,
-  commitMessageClickHandler
-};
+// module.exports =
+// {
+//   adicionarMensagem,
+//   formatarMensagens,
+//   atualizarHTML,
+//   commitMessageClickHandler
+// };
 // --------------------------------
