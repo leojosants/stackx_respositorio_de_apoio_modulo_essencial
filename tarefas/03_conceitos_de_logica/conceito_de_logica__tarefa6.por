@@ -5,26 +5,59 @@
 
 programa {
 	inclua biblioteca Matematica --> mat
-	
-	funcao inicio() {
-		real valorRecebidoPorHora = 0.0
-		inteiro numeroHorasTrabalhadasMes = 0
-		real valorTotalSalarioMensal = 0.0
 
-		escreva("\nEntre co os dados do trabalhador\n")
+	funcao real solicitaValorRecebidoPorHora() {
+		real valorRecebidoPorHora = 0.0
 		
 		escreva("- Infome o valor recebido por hora.............: R$ ")
 		leia(valorRecebidoPorHora)
 
+		retorne valorRecebidoPorHora
+	}
+
+	funcao inteiro solicitaNumeroHorasTrabalhadasMes() {
+		inteiro numeroHorasTrabalhadasMes = 0
+		
 		escreva("- Infome o número de horas trabalhadas no mês..: ")
 		leia(numeroHorasTrabalhadasMes)
 
-		valorTotalSalarioMensal = mat.arredondar((valorRecebidoPorHora * numeroHorasTrabalhadasMes), 2)
+		retorne numeroHorasTrabalhadasMes
+	}
 
+	funcao real formataNumero(real numero, inteiro casasDecimais) {
+		retorne mat.arredondar(numero, casasDecimais)
+	}
+
+	funcao real calculaValorTotalSalarioMensal(real valorRecebidoPorHora, inteiro numeroHorasTrabalhadasMes) {
+		retorne formataNumero((valorRecebidoPorHora * numeroHorasTrabalhadasMes), 2)
+	}
+
+	funcao vazio exibeDadosFuncionario(real valorRecebidoPorHora, inteiro numeroHorasTrabalhadasMes, real valorTotalSalarioMensal) {
 		escreva("\nDados do funcionário\n")
 		escreva("- Valor recebido por hora.............: R$ ", valorRecebidoPorHora, "\n")
 		escreva("- Número de horas trabalhadas no mês..: ", numeroHorasTrabalhadasMes, "\n")
 		escreva("- Salário a receber no referido mês...: R$ ", valorTotalSalarioMensal, "\n")
+	}
+	
+	funcao executaProgramaPrincipal() {
+		real valorRecebidoPorHora = 0.0
+		real valorTotalSalarioMensal = 0.0
+		inteiro numeroHorasTrabalhadasMes = 0
+
+		escreva("\nEntre com os dados do trabalhador\n")
+		
+		valorRecebidoPorHora = solicitaValorRecebidoPorHora()
+
+		numeroHorasTrabalhadasMes = solicitaNumeroHorasTrabalhadasMes()
+
+		valorTotalSalarioMensal = calculaValorTotalSalarioMensal(valorRecebidoPorHora, numeroHorasTrabalhadasMes) 
+
+		exibeDadosFuncionario(valorRecebidoPorHora, numeroHorasTrabalhadasMes, valorTotalSalarioMensal)
+	}
+
+	// programa principal
+	funcao inicio() {
+		executaProgramaPrincipal()
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -32,7 +65,8 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 918; 
+ * @POSICAO-CURSOR = 1678; 
+ * @DOBRAMENTO-CODIGO = [8];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
