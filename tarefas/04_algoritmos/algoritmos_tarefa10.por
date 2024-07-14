@@ -9,8 +9,33 @@
 
 programa {
 	inclua biblioteca Matematica --> mat
-	
-	funcao inicio() {
+
+	funcao real solicitaPublicoTotal() {
+		real publicoTotal = 0.0
+		
+		escreva("\nInforme o público total do jogo: ")
+		leia(publicoTotal)
+
+		retorne publicoTotal
+	}
+
+	funcao real calculaPrecoFinalIngresso(real publicoTotal, real porcentagem, real precoIngresso) {
+		retorne (publicoTotal * porcentagem) * precoIngresso
+	}
+
+	funcao real calculaRendaJogo(real precoFinalIngressoPopular, real precoFinalIngressoGeral, real precoFinalIngressoArquibancada, real precoFinalIngressoCadeiras) {
+		retorne precoFinalIngressoPopular + precoFinalIngressoGeral + precoFinalIngressoArquibancada + precoFinalIngressoCadeiras
+	}
+
+	funcao real formataValor(real valor, inteiro quantidadeCasasDecimais) {
+		retorne mat.arredondar(valor, quantidadeCasasDecimais)
+	}
+
+	funcao vazio exibeResultado(real rendaJogo) {
+		escreva("- Renda do jogo: R$", formataValor(rendaJogo, 2), "\n")
+	}
+
+	funcao vazio executaProgramaPrincipal() {
 		real rendaJogo = 0.0
 		real publicoTotal = 0.0
 				
@@ -29,20 +54,23 @@ programa {
 		real precoFinalIngressoArquibancada = 0.0
 		real precoFinalIngressoCadeiras = 0.0
 		
-		escreva("\nInforme o público total do jogo: ")
-		leia(publicoTotal)
+		publicoTotal = solicitaPublicoTotal()
 
-		precoFinalIngressoPopular = (publicoTotal * porcentagemPopular) * precoIngressoPopular
+		precoFinalIngressoPopular = calculaPrecoFinalIngresso(publicoTotal, porcentagemPopular, precoIngressoPopular)
 		
-		precoFinalIngressoGeral = (publicoTotal * porcentagemGeral) * precoIngressoGeral
+		precoFinalIngressoGeral = calculaPrecoFinalIngresso(publicoTotal, porcentagemGeral, precoIngressoGeral)
 		
-		precoFinalIngressoArquibancada = (publicoTotal * porcentagemArquibancada) * precoIngressoArquibancada
+		precoFinalIngressoArquibancada = calculaPrecoFinalIngresso(publicoTotal, porcentagemArquibancada, precoIngressoArquibancada)
 		
-		precoFinalIngressoCadeiras = (publicoTotal * porcentagemCadeiras) * precoIngressoCadeiras
+		precoFinalIngressoCadeiras = calculaPrecoFinalIngresso(publicoTotal, porcentagemCadeiras, precoIngressoCadeiras)
 		
-		rendaJogo = precoFinalIngressoPopular + precoFinalIngressoGeral + precoFinalIngressoArquibancada + precoFinalIngressoCadeiras
+		rendaJogo = calculaRendaJogo(precoFinalIngressoPopular, precoFinalIngressoGeral, precoFinalIngressoArquibancada, precoFinalIngressoCadeiras)
 
-		escreva("- Renda do jogo: R$", mat.arredondar(rendaJogo, 2), "\n")
+		exibeResultado(rendaJogo)
+	}
+
+	funcao inicio() {
+		executaProgramaPrincipal()
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -50,7 +78,8 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 919; 
+ * @POSICAO-CURSOR = 0; 
+ * @DOBRAMENTO-CODIGO = [12, 21, 25, 29, 33, 37];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
