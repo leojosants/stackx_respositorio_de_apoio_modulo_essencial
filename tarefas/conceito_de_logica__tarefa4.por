@@ -3,24 +3,39 @@
 // calcule e mostre quantos dias durará esse alimento para uma pessoa que consome 50 gramas desse alimento por dia.
 
 programa {
+
+  funcao real solicitaQuantidadeAlimentoEmKg() {
+    real quantidade
+
+    escreva("\nEntre com a quantidade de um alimento em quilos: ")
+    leia(quantidade)
+
+    retorne quantidade
+  }
+
   funcao real converteKgEmGramas(real gramas) {
     retorne gramas * 1000
   }
 
+  funcao real calculaDuracaoAlumentoEmDias(real consumoEmGramas, real consumoDiarioEmGramas) {
+    retorne consumoEmGramas / consumoDiarioEmGramas
+  }
+
+  funcao exibeResultado(real quantidadeAlimentoEmKg, inteiro duracaoAlimentoEmDias) {
+    escreva("Para a quantidade de ", quantidadeAlimentoEmKg, "kg em alimento, a duração será de ", duracaoAlimentoEmDias, " dias\n")
+  }
+
   funcao inicio() {
     real quantidadeAlimentoEmKg
-    real consumoDiarioEmGramasDia
+    real consumoDiarioEmGramas_50
     real consumoEmGramas
     inteiro duracaoAlimentoEmDias
     
-    consumoDiarioEmGramasDia = 50
-
-    escreva("\nEntre com a quantidade de um alimento em quilos: ")
-    leia(quantidadeAlimentoEmKg)
-
+    consumoDiarioEmGramas_50 = 50
+    quantidadeAlimentoEmKg = solicitaQuantidadeAlimentoEmKg()
     consumoEmGramas = converteKgEmGramas(quantidadeAlimentoEmKg)
-    duracaoAlimentoEmDias = consumoEmGramas / consumoDiarioEmGramasDia
+    duracaoAlimentoEmDias = calculaDuracaoAlumentoEmDias(consumoEmGramas, consumoDiarioEmGramas_50)
 
-    escreva("Para a quantidade de ", quantidadeAlimentoEmKg, "kg em alimento, a duração será de ", duracaoAlimentoEmDias, " dias\n")
+    exibeResultado(quantidadeAlimentoEmKg, duracaoAlimentoEmDias)
   }
 }
