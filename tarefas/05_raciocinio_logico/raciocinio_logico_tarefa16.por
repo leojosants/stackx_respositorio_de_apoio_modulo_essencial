@@ -2,7 +2,8 @@
 	Escreva um algoritmo que leia dez valores numéricos inteiros e apresente na tela o somatório dos valores.
 */
 
-programa {
+programa
+ {
 	funcao vazio exibeMensagemInicial(inteiro quantidadeValoresReceber) {
 		escreva("\nEntre com ", quantidadeValoresReceber, " valores inteiros\n")
 
@@ -18,11 +19,10 @@ programa {
 		retorne soma
 	}
 
-	funcao preencheVetor(inteiro quantidadeValoresReceber, inteiro valoresRecebidos[], inteiro somaValoresRecebidos) {
+	funcao vazio preencheVetor(inteiro quantidadeValoresReceber, inteiro valoresRecebidos[], inteiro somaValoresRecebidos) {
 		para(inteiro contador = 0; contador < quantidadeValoresReceber; contador++) {
 			inteiro valor = 0
 			valoresRecebidos[contador] = solicitaValor(contador, valor) 
-			//somaValoresRecebidos += valoresRecebidos[contador]
 		}
 	}
 
@@ -37,7 +37,8 @@ programa {
 		escreva("- Soma dos ", quantidadeValoresReceber, " valores recebidos: ", somaValoresRecebidos, "\n")
 	}
 	
-	funcao executarProgramaPrincipal() {
+	funcao executarProgramaPrincipal()
+ {
 		inteiro quantidadeValoresReceber = 10
 		inteiro valoresRecebidos[10]
 		inteiro somaValoresRecebidos = 0
