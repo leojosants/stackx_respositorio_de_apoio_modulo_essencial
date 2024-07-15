@@ -4,23 +4,45 @@
 
 programa {	
 	inclua biblioteca Matematica --> mat
-	funcao inicio() {
+
+	funcao real solicitaSalarioFuncionario(real salarioFuncionario) {
+		escreva("\nInforme o salário do funcionário: R$ ")
+		leia(salarioFuncionario)
+
+		retorne salarioFuncionario
+	}
+
+	funcao real formataValor(real valor, inteiro casasDecimais) {
+		retorne mat.arredondar(valor, casasDecimais)
+	}
+
+	funcao real calculaNovoSalarioFuncionario(real salarioFuncionario, real taxaReajuste) {
+		retorne (salarioFuncionario + (salarioFuncionario * taxaReajuste))
+	}
+
+	funcao vazio exubeDadosFuncionario(real salarioFuncionario, real taxaReajuste, real novoSalarioFuncionario) {
+		escreva("\nDados do funcionário\n")
+		escreva("- Salário atual.....: R$ ", salarioFuncionario, "\n")
+		escreva("- Taxa de reajuste..: ", taxaReajuste, "%\n")
+		escreva("- Novo salário......: R$ ", novoSalarioFuncionario, "\n")
+	}
+	
+	funcao executaProgramaPrincipal() {
 		real salarioFuncionario = 0.0
 		real novoSalarioFuncionario = 0.0
 		real taxaReajuste = 0.15 // 15%
 		
-		escreva("\nInforme o salário do funcionário: R$ ")
-		leia(salarioFuncionario)
+		salarioFuncionario = solicitaSalarioFuncionario(salarioFuncionario)
+		salarioFuncionario = formataValor(salarioFuncionario, 2)
 
-		salarioFuncionario = mat.arredondar(salarioFuncionario, 2)
+		novoSalarioFuncionario = calculaNovoSalarioFuncionario(salarioFuncionario, taxaReajuste)
+		novoSalarioFuncionario = formataValor(novoSalarioFuncionario, 2)
 
-		novoSalarioFuncionario = (salarioFuncionario + (salarioFuncionario * taxaReajuste))
-		novoSalarioFuncionario = mat.arredondar(novoSalarioFuncionario, 2)
+		exubeDadosFuncionario(salarioFuncionario, taxaReajuste, novoSalarioFuncionario)
+	}
 
-		escreva("\nExibindo dados\n")
-		escreva("- Salário atual.....: R$ ", salarioFuncionario, "\n")
-		escreva("- Taxa de reajuste..: ", taxaReajuste, "%\n")
-		escreva("- Novo salário......: R$ ", novoSalarioFuncionario, "\n")
+	funcao inicio() {
+		executaProgramaPrincipal()
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -28,7 +50,8 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 669; 
+ * @POSICAO-CURSOR = 763; 
+ * @DOBRAMENTO-CODIGO = [7];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
