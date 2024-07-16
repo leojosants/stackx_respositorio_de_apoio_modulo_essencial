@@ -6,52 +6,93 @@
 programa {	
 	inclua biblioteca Matematica --> mat
 	inclua biblioteca Texto --> tx
+
+	funcao vazio mensagemInicial() {
+		escreva("\nEntre com 3 notas e o código com 3 dígitos [xxx] para um aluno\n")
+	}
+
+	funcao cadeia solicitaCodigoAluno(cadeia codigoAluno) {
+		escreva("\nInforme o código com 3 dígitos [xxx] ou [0] para finalizar: ")
+		leia(codigoAluno)
+		retorne codigoAluno
+	}
+
+	funcao inteiro verificaQuantidadeDigitosCodigo(cadeia codigoAluno) {
+		retorne tx.numero_caracteres(codigoAluno)
+	}
 	
-	funcao inicio() {
+	funcao vazio exibeMensagemErroDigitos() {
+		escreva("\n --> ERRO: quantidade de dígitos diferente de 3, tente novamente!\n")
+	}
+
+	funcao real solicitaNotaAluno(inteiro contador, real notaAluno) {
+		escreva("- ", contador, "ª nota..: ")
+		leia(notaAluno)
+		retorne notaAluno
+	}
+
+	funcao real formataValor(real valor, inteiro casasDecimais) {
+		retorne mat.arredondar(valor, casasDecimais)
+	}
+
+	funcao real calculaMediaAluno(real somaNotasAluno, inteiro quantidadeNotas) {
+		retorne (somaNotasAluno / quantidadeNotas)
+	}
+
+	funcao vazio exibeMedia(real mediaAluno) {
+		escreva("- Média....: ", mediaAluno, "\n")
+	}
+
+	funcao vazio mensagemEncerraPrograma() {
+		escreva("\nOpção [0], finalizar programa!\n")
+	}
+	
+	funcao executaProgramaPrincipal() {
 		cadeia codigoAluno = ""
-		real somaNotasAluno = 0.0
 		real notaAluno = 0.0
 		real mediaAluno = 0.0
+		real somaNotasAluno = 0.0
 		inteiro quantidadeDigitosCodigo = 0
 		
-		escreva("\nEntre com 3 notas e o código com 3 dígitos [xxx] para um aluno\n")
+		mensagemInicial()
 
 		faca {
-			escreva("\nInforme o código com 3 dígitos [xxx] ou [0] para finalizar: ")
-			leia(codigoAluno)
+			codigoAluno = solicitaCodigoAluno(codigoAluno)
 
-			quantidadeDigitosCodigo = tx.numero_caracteres(codigoAluno)
+			quantidadeDigitosCodigo = verificaQuantidadeDigitosCodigo(codigoAluno)
 			
-			enquanto(quantidadeDigitosCodigo != 3 e codigoAluno != "0") {
-				escreva("\n--> erro: informe somente 3 dígitos para o código do aluno, tente novamente: ")
-				leia(codigoAluno)
-
-				quantidadeDigitosCodigo = tx.numero_caracteres(codigoAluno)
+			enquanto((quantidadeDigitosCodigo != 3) e (codigoAluno != "0")) {
+				exibeMensagemErroDigitos()
+				codigoAluno = solicitaCodigoAluno(codigoAluno)
+				quantidadeDigitosCodigo = verificaQuantidadeDigitosCodigo(codigoAluno)
 			}
 
 			se(codigoAluno != "0") {
-				escreva("\nInforme 3 notas para o código: ", codigoAluno, "\n")
+				inteiro quantidadeNotas = 3
+				escreva("\nInforme ", quantidadeNotas," notas para o código: ", codigoAluno, "\n")
 				
-				para(inteiro contador = 1; contador <= 3; contador ++) {
-					escreva("- ", contador, "ª nota..: ")
-					leia(notaAluno)
-
-					notaAluno = mat.arredondar(notaAluno, 2)
+				para(inteiro contador = 1; contador <= quantidadeNotas; contador ++) {
+					notaAluno = solicitaNotaAluno(contador, notaAluno)
+					notaAluno = formataValor(notaAluno, 2)
 					
 					somaNotasAluno += notaAluno
-					somaNotasAluno = mat.arredondar(somaNotasAluno, 2)
+					somaNotasAluno = formataValor(somaNotasAluno, 2)
 				}
 
-				mediaAluno = (somaNotasAluno / 3)
-				mediaAluno = mat.arredondar(mediaAluno, 2)
+				mediaAluno = calculaMediaAluno(somaNotasAluno, quantidadeNotas)
+				mediaAluno = formataValor(mediaAluno, 2)
 
-				escreva("- Média....: ", mediaAluno, "\n")
+				exibeMedia(mediaAluno)
 			}
 			senao {
-				escreva("\nOpção [0], finalizar programa!\n")
+				mensagemEncerraPrograma()
 			}
 		}
 		enquanto(codigoAluno != "0")
+	}
+
+	funcao inicio() {
+		executaProgramaPrincipal()
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -59,7 +100,8 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 625; 
+ * @POSICAO-CURSOR = 801; 
+ * @DOBRAMENTO-CODIGO = [9, 19, 27, 33, 41, 45];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
