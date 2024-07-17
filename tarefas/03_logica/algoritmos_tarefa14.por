@@ -6,65 +6,117 @@
 
 programa {	
 	inclua biblioteca Matematica
-	
-	funcao inicio() {
-		real operando1
-		real operando2
-		real resultadoOperacao = 0.0
-		inteiro opcaoOperacao
-		
-		escreva("\nInforme dois valores e escolha uma operação\n")
-		
-		escreva("- Primeiro valor: ")
-		leia(operando1)
 
-		escreva("- Segundo  valor: ")
-		leia(operando2)
+	funcao real formataValor(real valor, inteiro casasDecimais) {
+		retorne Matematica.arredondar(valor, casasDecimais)
+	}
 
+	funcao real solicitaOperando(real operando, cadeia primeiroOuSegundoOperando) {
+		escreva("- ", primeiroOuSegundoOperando, " valor..: ")		
+		leia(operando)	
+		retorne operando 
+	}
+
+	funcao vazio exibeMenuOperacoes() {
 		escreva("\nMenu de operações matemáticas\n")
 		escreva("[ 1 ] - Adição\n")
 		escreva("[ 2 ] - Subtração\n")
 		escreva("[ 3 ] - Divisão\n")
 		escreva("[ 4 ] - Multiplicação\n")
-
+	}
+	
+	funcao inteiro solicitaOpcaoOperacao(inteiro opcaoOperacao) {
 		escreva("\nEscolha uma opção: ")
 		leia(opcaoOperacao)
+		retorne opcaoOperacao
+	}
+
+	funcao real calculaResultadoOperacao(real operando1, real operando2, inteiro opcaoOperacao) {
+		real resultado = 0.0
+		
+		se(opcaoOperacao == 1) {
+			resultado = (operando1 + operando2)
+		}
+		senao se(opcaoOperacao == 2) {
+			resultado = (operando1 - operando2)
+		}
+		senao se(opcaoOperacao == 3) {
+			resultado = (operando1 / operando2)
+		}
+		senao se(opcaoOperacao == 4) {
+			resultado = (operando1 * operando2)
+		}
+		
+		retorne resultado
+	}
+
+	funcao vazio exibeResultadoOperacao(real operando1, real operando2, real resultadoOperacao) {
+		escreva("- Operando 1...: ", operando1, "\n")
+		escreva("- Operando 2...: ", operando2, "\n")
+		escreva("- Resultado....: ", resultadoOperacao, "\n")
+	}
+	
+	funcao executaProgramaPrincipal() {
+		real operando1 = 0.0
+		real operando2 = 0.0
+		real resultadoOperacao = 0.0
+		inteiro opcaoOperacao = 0
+		inteiro opcaoOperacaoAdicao = 1
+		inteiro opcaoOperacaoSubtracao = 2
+		inteiro opcaoOperacaoDivisao = 3
+		inteiro opcaoOperacaoMultiplicacao = 4
+		
+		escreva("\nInforme dois valores e escolha uma operação\n")
+		
+		operando1 = solicitaOperando(operando1, "Primeiro")
+		operando1 = formataValor(operando1, 2)	
+		
+		operando2 = solicitaOperando(operando2, "Segundo ") 
+		operando2 = formataValor(operando2, 2)	
+
+		exibeMenuOperacoes()
+
+		opcaoOperacao = solicitaOpcaoOperacao(opcaoOperacao)
 
 		escolha (opcaoOperacao) {
-			caso 1:
-				escreva ("\n[ Adição ]\n")				
-				resultadoOperacao = Matematica.arredondar((operando1 + operando2), 2)		
+			caso opcaoOperacaoAdicao:
+				escreva("\n[ Adição ]\n")				
+				resultadoOperacao = calculaResultadoOperacao(operando1, operando2, opcaoOperacaoAdicao)	
 				pare
 	
-			caso 2:
-				escreva ("\n[ Subtração ]\n")
-				resultadoOperacao = Matematica.arredondar((operando1 - operando2), 2)
+			caso opcaoOperacaoSubtracao:
+				escreva("\n[ Subtração ]\n")
+				resultadoOperacao = calculaResultadoOperacao(operando1, operando2, opcaoOperacaoSubtracao)	
 				pare
 	
-			caso 3:
-				escreva ("\n[ Divisão ]\n")
+			caso opcaoOperacaoDivisao:
+				escreva("\n[ Divisão ]\n")
 				
 				se(operando2 == 0) {
 					escreva("- Não é possível realizar divisão por ZERO!\n")					
 					retorne
 				}
 				
-				resultadoOperacao = Matematica.arredondar((operando1 / operando2), 2)
+				resultadoOperacao = calculaResultadoOperacao(operando1, operando2, opcaoOperacaoDivisao)	
 				pare
 
-			caso 4:
-				escreva ("\n[ Multiplicação ]\n")
-				resultadoOperacao = Matematica.arredondar((operando1 * operando2), 2)
+			caso opcaoOperacaoMultiplicacao:
+				escreva("\n[ Multiplicação ]\n")
+				resultadoOperacao = calculaResultadoOperacao(operando1, operando2, opcaoOperacaoMultiplicacao)	
 				pare
 	
 			caso contrario:
-				escreva ("\n--> Opção invávida, finalizar programa!\n")
+				escreva("\n--> Opção invávida, finalizar programa!\n")
 				retorne
 		}
 
-		escreva("- Operando 1...: ", operando1, "\n")
-		escreva("- Operando 2...: ", operando2, "\n")
-		escreva("- Resultado....: ", resultadoOperacao, "\n")
+		resultadoOperacao = formataValor(resultadoOperacao, 2)
+		
+		exibeResultadoOperacao(operando1, operando2, resultadoOperacao)
+	}
+
+	funcao inicio() {
+		executaProgramaPrincipal()
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -72,7 +124,8 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 546; 
+ * @POSICAO-CURSOR = 3313; 
+ * @DOBRAMENTO-CODIGO = [9, 13, 19, 27, 33, 52];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
