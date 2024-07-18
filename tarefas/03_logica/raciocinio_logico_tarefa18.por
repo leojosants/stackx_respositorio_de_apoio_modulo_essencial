@@ -13,18 +13,38 @@
 */
 
 programa {	
-	funcao inicio() {
-		inteiro valor
-		inteiro limiteParaMultiplicacao = 50
+	funcao inteiro solicitaValor(inteiro dividendo) {
+		escreva("\nInforme um dividendo inteiro e tenha o resultado de sua tabuada: ")
+		leia(dividendo)
+		retorne dividendo
+	}
 
-		escreva("\nInforme um valor inteiro e tenha o resultado de sua tabuada de divisão: ")
-		leia(valor)
+	funcao inteiro calculaTabuada(inteiro divisor, inteiro dividendo) {
+		retorne (divisor / dividendo)
+	}
 
-		escreva("\nTabuada do número ", valor, "\n")
+	funcao exibeResultadoTabuada(inteiro dividendo, inteiro limiteParaDivisao) {
+		inteiro multiplicador
+		inteiro resultado
 
-		para(inteiro contador = 5; contador <= limiteParaMultiplicacao; contador += 5) {
-			escreva(contador, " / ", valor, " = ", (contador / valor), "\n")
+		escreva("\nTabuada do número ", dividendo, "\n")
+
+		para(inteiro divisor = 5; divisor <= limiteParaDivisao; divisor += 5) {
+			escreva(divisor, " / ", dividendo, " = ", (divisor / dividendo), "\n")
 		}
+	}
+	
+	funcao executaProgramaPrincipal() {
+		inteiro dividendo = 0
+		inteiro limiteParaDivisao = 50
+
+		dividendo = solicitaValor(dividendo)
+
+		exibeResultadoTabuada(dividendo, limiteParaDivisao) 			
+	}
+
+	funcao inicio() {
+		executaProgramaPrincipal()	
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -32,7 +52,8 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 576; 
+ * @POSICAO-CURSOR = 1053; 
+ * @DOBRAMENTO-CODIGO = [15, 21];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
