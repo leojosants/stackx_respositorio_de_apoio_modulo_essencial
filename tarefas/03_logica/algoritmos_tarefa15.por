@@ -11,81 +11,83 @@
 	Caso não seja informado nenhum código válido, informar na tela que a língua nativa da pessoa não pode ser verificada.
 */
 
-programa {	
-	funcao inicio() {
-		inteiro opcaoCidadania
-		inteiro quantidadeOpcoesCidadania = 6
-		cadeia vetorOpcoesCidadanias[6] = {"Brasileiro","Alemão", "Inglês", "Italiano", "Espanhol", "Francês"}
-		cadeia vetorLinguasNativas[6] = {"Português","Alemão", "Inglês", "Italiano", "Espanhol", "Francês"}
+programa {
+	inclua biblioteca Util
+
+	funcao inteiro verificaTamanhoVetor(cadeia vetor[]) {
+		retorne Util.numero_elementos(vetor)		
+	}
+
+	funcao vazio exibeMenuCidadania(cadeia vetorOpcoesCidadanias[]) {
+		inteiro tamanhoVetor = verificaTamanhoVetor(vetorOpcoesCidadanias)
 		
 		escreva("\nMenu de cidadania\n")
 
-		para(inteiro indice = 0; indice < quantidadeOpcoesCidadania; indice++) {
+		para(inteiro indice = 0; indice < tamanhoVetor; indice++) {
 			escreva("[ ", (indice + 1), " ] - ", vetorOpcoesCidadanias[indice], "\n")
 		}
-		
-		escreva("\nEscolha uma opção: ")
-		leia(opcaoCidadania)
+	}
 
-		escolha(opcaoCidadania) {
+	funcao inteiro solicitaOpcaoCidadania(inteiro opcaoCidadaniaEscolhida) {
+		escreva("\nEscolha uma opção: ")
+		leia(opcaoCidadaniaEscolhida)
+		retorne opcaoCidadaniaEscolhida
+	}
+	
+	funcao vazio exibeResultadoOpcaoEscolhida(inteiro opcaoCidadaniaEscolhida, inteiro quantidadeOpcoesCidadania, cadeia vetorOpcoesCidadanias[], cadeia vetorLinguasNativas[]) {
+		opcaoCidadaniaEscolhida = (opcaoCidadaniaEscolhida - 1)
+		
+		para(inteiro indice = 0; indice < quantidadeOpcoesCidadania; indice++) {
+			se(indice == opcaoCidadaniaEscolhida) {
+				escreva("\n- Cidadania......: ", vetorOpcoesCidadanias[opcaoCidadaniaEscolhida], "\n- Lingua nativa..: ", vetorLinguasNativas[opcaoCidadaniaEscolhida], "\n")
+				pare
+			}
+		}
+	}
+	
+	funcao executaProgramaPrincipal() {
+		inteiro opcaoCidadaniaEscolhida = 0
+		inteiro quantidadeOpcoesCidadania = 6
+		cadeia vetorOpcoesCidadanias[6] = {"Brasileiro","Alemão", "Inglês", "Italiano", "Espanhol", "Francês"}
+		cadeia vetorLinguasNativas[6] = {"Português","Alemão", "Inglês", "Italiano", "Espanhol", "Francês"}	
+		
+		exibeMenuCidadania(vetorOpcoesCidadanias)
+		
+		opcaoCidadaniaEscolhida = solicitaOpcaoCidadania(opcaoCidadaniaEscolhida)
+
+		escolha(opcaoCidadaniaEscolhida) {
 			caso 1:
-				para(inteiro indice = 0; indice < quantidadeOpcoesCidadania; indice++) {
-					se(indice == 0) {
-						escreva("\n- Cidadania......: ", vetorOpcoesCidadanias[0], "\n- Lingua nativa..: ", vetorLinguasNativas[0], "\n")
-						pare
-					}
-				}
+				exibeResultadoOpcaoEscolhida(opcaoCidadaniaEscolhida, quantidadeOpcoesCidadania, vetorOpcoesCidadanias, vetorLinguasNativas)
 				pare
 
 			caso 2: 
-				para(inteiro indice = 0; indice < quantidadeOpcoesCidadania; indice++) {
-					se(indice == 1) {
-						escreva("\n- Cidadania......: ", vetorOpcoesCidadanias[1], "\n- Lingua nativa..: ", vetorLinguasNativas[1], "\n")
-						pare
-					}
-				}
+				exibeResultadoOpcaoEscolhida(opcaoCidadaniaEscolhida, quantidadeOpcoesCidadania, vetorOpcoesCidadanias, vetorLinguasNativas)
 				pare
 
 			caso 3: 
-				para(inteiro indice = 0; indice < quantidadeOpcoesCidadania; indice++) {
-					se(indice == 2) {
-						escreva("\n- Cidadania......: ", vetorOpcoesCidadanias[2], "\n- Lingua nativa..: ", vetorLinguasNativas[2], "\n")
-						pare
-					}
-				}
+				exibeResultadoOpcaoEscolhida(opcaoCidadaniaEscolhida, quantidadeOpcoesCidadania, vetorOpcoesCidadanias, vetorLinguasNativas)
 				pare
 
 			caso 4: 
-				para(inteiro indice = 0; indice < quantidadeOpcoesCidadania; indice++) {
-					se(indice == 3) {
-						escreva("\n- Cidadania......: ", vetorOpcoesCidadanias[3], "\n- Lingua nativa..: ", vetorLinguasNativas[3], "\n")
-						pare
-					}
-				}
+				exibeResultadoOpcaoEscolhida(opcaoCidadaniaEscolhida, quantidadeOpcoesCidadania, vetorOpcoesCidadanias, vetorLinguasNativas)
 				pare
 
 			caso 5: 
-				para(inteiro indice = 0; indice < quantidadeOpcoesCidadania; indice++) {
-					se(indice == 4) {
-						escreva("\n- Cidadania......: ", vetorOpcoesCidadanias[4], "\n- Lingua nativa..: ", vetorLinguasNativas[4], "\n")
-						pare
-					}
-				}
+				exibeResultadoOpcaoEscolhida(opcaoCidadaniaEscolhida, quantidadeOpcoesCidadania, vetorOpcoesCidadanias, vetorLinguasNativas)
 				pare
 
 			caso 6:
-				para(inteiro indice = 0; indice < quantidadeOpcoesCidadania; indice++) {
-					se(indice == 5) {
-						escreva("\n- Cidadania......: ", vetorOpcoesCidadanias[5], "\n- Lingua nativa..: ", vetorLinguasNativas[5], "\n")
-						pare
-					}
-				}
+				exibeResultadoOpcaoEscolhida(opcaoCidadaniaEscolhida, quantidadeOpcoesCidadania, vetorOpcoesCidadanias, vetorLinguasNativas)
 				pare
 				
 			caso contrario: 
-				escreva("\n- Cidadania e Lingua nativa inexistente para código..: ", opcaoCidadania, "\n")
+				escreva("\n- Cidadania e Lingua nativa inexistente para código..: ", opcaoCidadaniaEscolhida, "\n")
 				pare
 		}
+	}
+
+	funcao inicio() {
+		executaProgramaPrincipal()
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -93,8 +95,8 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 848; 
- * @DOBRAMENTO-CODIGO = [31, 40, 49, 58];
+ * @POSICAO-CURSOR = 618; 
+ * @DOBRAMENTO-CODIGO = [16, 20, 30, 36];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
