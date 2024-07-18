@@ -12,18 +12,39 @@
 */
 
 programa {	
-	funcao inicio() {
-		inteiro valor
+	funcao inteiro solicitaValor(inteiro multiplicando) {
+		escreva("\nInforme um multiplicador inteiro e tenha o resultado de sua tabuada: ")
+		leia(multiplicando)
+		retorne multiplicando
+	}
+
+	funcao inteiro calculaTabuada(inteiro multiplicador, inteiro multiplicando) {
+		retorne (multiplicador * multiplicando)
+	}
+
+	funcao exibeResultadoTabuada(inteiro multiplicando, inteiro limiteParaMultiplicacao) {
+		inteiro multiplicador
+		inteiro resultado
+		
+		escreva("\nTabuada do número ", multiplicando, "\n")
+
+		para(multiplicador = 1; multiplicador <= limiteParaMultiplicacao; multiplicador++) {
+			resultado = calculaTabuada(multiplicador, multiplicando)
+			escreva(multiplicador, " * ", multiplicando, " = ", resultado, "\n")
+		}
+	}
+	
+	funcao executaProgramaPrincipal() {
+		inteiro multiplicando = 0
 		inteiro limiteParaMultiplicacao = 10
 		
-		escreva("\nInforme um valor inteiro e tenha o resultado de sua tabuada: ")
-		leia(valor)
+		multiplicando = solicitaValor(multiplicando) 
 
-		escreva("\nTabuada do número ", valor, "\n")
+		exibeResultadoTabuada(multiplicando, limiteParaMultiplicacao) 
+	}
 
-		para(inteiro contador = 1; contador <= limiteParaMultiplicacao; contador++) {
-			escreva(contador, " * ", valor, " = ", (contador * valor), "\n")
-		}
+	funcao inicio() {
+		executaProgramaPrincipal()
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -31,7 +52,7 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 358; 
+ * @POSICAO-CURSOR = 378; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
