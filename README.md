@@ -4,6 +4,5 @@
 
 ### Propostas de Tarefas
 
-- [01 - ChatLab](https://github.com/leojosants/stackx_respositorio_de_apoio_modulo_essencial/tree/main/tarefas/chatLab)
-- [02 - Criação de uma apliação em Node.Js](https://github.com/leojosants/stackx_respositorio_de_apoio_modulo_essencial/tree/main/tarefas/criacao_de_uma_apliacao_em_nodejs)
-- [03 - Lógica](https://github.com/leojosants/stackx_respositorio_de_apoio_modulo_essencial/tree/main/tarefas/03_logica)
+- [01_tarefas_sem_data](https://github.com/leojosants/stackx_respositorio_de_apoio_modulo_essencial/tree/main/tarefas/01_tarefas_sem_data)
+- [02_tarefas_passadas](https://github.com/leojosants/stackx_respositorio_de_apoio_modulo_essencial/tree/main/tarefas/02_tarefas_passadas)
