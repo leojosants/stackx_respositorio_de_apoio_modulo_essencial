@@ -14,8 +14,13 @@
 programa {		
 	inclua biblioteca Util
 	inclua biblioteca Matematica
+
+	funcao inteiro geraNumerosAleatorios(inteiro minimo, inteiro maximo) {
+		retorne Util.sorteia(minimo, maximo)
+	}
 	
-	funcao inicio() {
+	
+	funcao inicio() {	
 		cadeia estatisticasAno = "2023" // dados ficticios
 		
 		cadeia nomeCidadeComMaiorIndiceAcidente = ""		
@@ -23,9 +28,33 @@ programa {
 		
 		cadeia nomeCidades[] = { "Itamorandiba (MG)", "Quixeramobim (CE)", "Nova Palma (RS)", "São Luiz (MA)", "Tupa (SP)" }
 		
-		real numeroVeiculosPasseio[] = { 1.883, 1.206, 1.134, 1.079, 1.779 }
-		real numeroAcidentesTransito[] = { 970.34, 73.86, 340.01, 877.43, 677.95 }
-		real numeroAcidentesTransitoComVitimas[] = { 7.34, 3.86, 4.01, 8.43, 6.95 }		
+		//real numeroVeiculosPasseio[] = { 1.883, 1.206, 1.134, 1.079, 1.779 }
+		inteiro numeroVeiculosPasseio[] = { 
+			geraNumerosAleatorios(1, 10000), 
+			geraNumerosAleatorios(1, 10000), 
+			geraNumerosAleatorios(1, 10000), 
+			geraNumerosAleatorios(1, 10000), 
+			geraNumerosAleatorios(1, 10000)
+		}
+
+		
+		//real numeroAcidentesTransito[] = { 970.34, 73.86, 340.01, 877.43, 677.95 }
+		inteiro numeroAcidentesTransito[] = { 
+			geraNumerosAleatorios(1, 1000), 
+			geraNumerosAleatorios(1, 1000), 
+			geraNumerosAleatorios(1, 1000), 
+			geraNumerosAleatorios(1, 1000), 
+			geraNumerosAleatorios(1, 1000)
+		}
+		
+		//real numeroAcidentesTransitoComVitimas[] = { 7.34, 3.86, 4.01, 8.43, 6.95 }		
+		inteiro numeroAcidentesTransitoComVitimas[] = { 
+			geraNumerosAleatorios(1, 900), 
+			geraNumerosAleatorios(1, 900), 
+			geraNumerosAleatorios(1, 900), 
+			geraNumerosAleatorios(1, 900), 
+			geraNumerosAleatorios(1, 900)
+		}		
 
 		real maiorIndiceAcidenteTransito = 0.0
 		real menorIndiceAcidenteTransito = 11111111.1
@@ -38,7 +67,7 @@ programa {
 
 		inteiro totalCidades = Util.numero_elementos(nomeCidades)
 		
-		real quantidadeAcidentesEmCidadesComVeiculosMenorDoisMil[5]
+		inteiro quantidadeAcidentesEmCidadesComVeiculosMenorDoisMil[5]
 		
 		cadeia nomeCidadeComQuantidadeVeiculosMenorDoisMil[5]
 		
@@ -127,7 +156,7 @@ programa {
 
 		escreva("\nMédia de acidentes de trânsito nas cidades com menos de 2.000 veículos de passeio\n")
 		para (inteiro contador = 0; contador < Util.numero_elementos(numeroVeiculosPasseio); contador++) {
-			se (numeroVeiculosPasseio[contador] < 2.000) {
+			se (numeroVeiculosPasseio[contador] < 2000) {
 				quantidadeAcidentesEmCidadesComVeiculosMenorDoisMil[contador] = numeroAcidentesTransito[contador]
 				nomeCidadeComQuantidadeVeiculosMenorDoisMil[contador] = nomeCidades[contador]
 			}
@@ -137,7 +166,7 @@ programa {
 			para (inteiro contador = 0; contador < Util.numero_elementos(nomeCidadeComQuantidadeVeiculosMenorDoisMil); contador++) {
 				somaAcidentesEmCidadesComVeiculosMenorDoisMil += quantidadeAcidentesEmCidadesComVeiculosMenorDoisMil[contador]
 				
-				se (quantidadeAcidentesEmCidadesComVeiculosMenorDoisMil[contador] > 0.0) {
+				se (quantidadeAcidentesEmCidadesComVeiculosMenorDoisMil[contador] > 0) {
 					escreva("\t", nomeCidadeComQuantidadeVeiculosMenorDoisMil[contador], ": ", quantidadeAcidentesEmCidadesComVeiculosMenorDoisMil[contador], "\n")
 				}
 			}
@@ -151,9 +180,7 @@ programa {
 		escreva(" - Média de acidentes\n")
 		escreva("\t", mediaAcidenteCidadesComMenosDoisMilVeiculos)
 		
-		escreva("\n")
-
-	
+		escreva("\n")	
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -161,8 +188,7 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1759; 
- * @DOBRAMENTO-CODIGO = [58, 68, 78, 97, 103, 116, 121];
+ * @POSICAO-CURSOR = 7807; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
