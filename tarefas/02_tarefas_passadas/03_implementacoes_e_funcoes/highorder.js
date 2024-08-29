@@ -8,6 +8,7 @@ function dobrarNumeros(numeros) {
 const numeros = [10, 20, 30, 40, 50];
 dobrarNumeros(numeros);
 
+
 // Implemente a função 'somarValores' que recebe um array de números
 // e retorna a soma de todos os valores.
 function somarValores(numeros2) {
@@ -17,6 +18,7 @@ function somarValores(numeros2) {
 }
 const numeros2 = [10, 20, 30, 40, 50];
 somarValores(numeros2);
+
 
 // Implemente a função 'filtrarPares' que recebe um array de números
 // e retorna um novo array contendo apenas os números pares.

@@ -35,12 +35,14 @@ function ehAdulto(pessoa) {
     console.log(`Mensagem: ${mensagem}`);
 }
 
+
 const pessoa = {
     nome: 'John',
     idade: 25,
     cidade: 'New York',
 };
 // ehAdulto(pessoa);
+
 
 // Concatena os valores de um objeto em uma string
 function concatenaValores(obj) {

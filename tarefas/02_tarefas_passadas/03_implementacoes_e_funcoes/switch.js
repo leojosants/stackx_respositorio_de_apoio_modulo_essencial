@@ -79,6 +79,7 @@ function retornaCategoriaProduto(type) {
 
     switch (type.toLowerCase()) {
         case 'eletrônicos':
+        case 'eletronicos':
             categoria = 'Tecnologia';
             break;
 

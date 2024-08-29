@@ -12,22 +12,35 @@ function somaNumeros(n) {
 
 // Verifica se um número é PAR
 function ehPar(numero) {
-  if (numero === 0) {
+  if (isNaN(number)) {
+    return;
+  }
+
+  if (number === 0) {
     return true;
   }
-  else if (numero === 1) {
+
+  if (number === 1) {
     return false;
   }
-  else {
-    return ehPar(numero - 2);
-  }
+
+  return ehPar(number - 2);
 }
 // ehPar(numero);
 
 function fibonacci(n) {
-  if (n <= 1) {
-    return 1;
+  if (isNaN(n)) {
+    return;
   }
+
+  if (n < 0) {
+    return;
+  }
+
+  if (n === 0 || n === 1) {
+    return n;
+  }
+
   return fibonacci(n - 1) + fibonacci(n - 2);
 };
 // console.log(fibonacci(10));
