@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "Leonardo <leonardojosantos@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "criacao_de_uma_apliacao_em_nodejs": "file:"
+  }
 }

@@ -1,14 +1,1 @@
-{ 
-    "private": true,
-    "name": "teste-unitario",
-    "devDependencies": {
-      "@babel/core": "*",
-      "@babel/preset-env": "*",
-      "babel-jest": "*",
-      "jest": "*"
-    },
-    "scripts": {
-      "test": "jest"
-    }
-}
-  
+{"private":true,"name":"teste-unitario","devDependencies":{"@babel/core":"*","@babel/preset-env":"*","babel-jest":"*","jest":"*"},"scripts":{"test":"jest"},"dependencies":{"teste-unitario":"file:"}}
