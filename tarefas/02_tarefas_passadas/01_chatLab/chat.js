@@ -5,19 +5,12 @@
  */
 
 /* - - - - - - - - -  global - - - - - - - - - */
-const messageCommit = document.querySelector('#message-commit');
-const messageInput = document.querySelector('#message-input');
-const chatMessages = document.querySelector('#chat-messages');
+const messageCommit = document.querySelector("#message-commit");
+const messageInput = document.querySelector("#message-input");
+const chatMessages = document.querySelector("#chat-messages");
 const listaMensagens = [];
 
 /* - - - - - - - - -  funções - - - - - - - - - */
-function adicionarMensagem(apelido, mensagem) {
-  const estrutura = {
-    apelido: apelido,
-    mensagem: mensagem,
-  };
-  listaMensagens.push(estrutura);
-}
 
 function criarElementoHTML(elementoHTML) {
   return document.createElement(elementoHTML);
@@ -27,53 +20,73 @@ function adicionarClasse(elementoHTML, nomeDaClasse) {
   elementoHTML.classList.add(nomeDaClasse);
 }
 
+function innerTextFunction(elementoHTML, texto) {
+  elementoHTML.innerText = texto;
+}
+
 function adicionarElementoFilhoAoElementoPai(elementoHTMLPai, elementoHTMLFilho) {
   elementoHTMLPai.appendChild(elementoHTMLFilho);
 }
 
-function formatarMensagens() {
-  const chatMessageDiv = criarElementoHTML('div');
-  adicionarClasse(chatMessageDiv, 'chat-message');
-
-  for (let indice = 0; indice < listaMensagens.length; indice++) {
-    const chatMessageApelidoSpan = criarElementoHTML('span');
-    adicionarClasse(chatMessageApelidoSpan, 'chat-message-apelido')
-    chatMessageApelidoSpan.innerText = listaMensagens[indice].apelido;
-
-    const chatMessageItemSpan = criarElementoHTML('span');
-    adicionarClasse(chatMessageItemSpan, 'chat-message-item');
-    chatMessageItemSpan.innerText = ` ${listaMensagens[indice].mensagem}`;
-
-    const brElement = criarElementoHTML('br');
-
-    adicionarElementoFilhoAoElementoPai(chatMessageDiv, chatMessageApelidoSpan);
-    adicionarElementoFilhoAoElementoPai(chatMessageDiv, chatMessageItemSpan);
-    adicionarElementoFilhoAoElementoPai(chatMessageDiv, brElement);
-  }
-
-  return chatMessageDiv;
-}
-
-function atualizarHTML() {
-  adicionarElementoFilhoAoElementoPai(chatMessages, formatarMensagens());
-  limparCampo();
-  adicionarFocoNoCampo();
-}
-
 function limparCampo() {
-  messageInput.value = '';
+  messageInput.value = "";
 }
 
 function adicionarFocoNoCampo() {
   messageInput.focus();
 }
 
+function adicionarMensagem(apelido, mensagem) {
+  const estrutura = {
+    apelido: apelido,
+    mensagem: mensagem,
+  };
+
+  listaMensagens.push(estrutura);
+}
+
+function formatarMensagens() {
+  const fragmento = document.createDocumentFragment();
+
+  listaMensagens.forEach(
+    function (item) {
+      const chatMessage_div = criarElementoHTML("div");
+      adicionarClasse(chatMessage_div, "chat-message");
+
+      const chatMessageApelido_span = criarElementoHTML("span");
+      adicionarClasse(chatMessageApelido_span, "chat-message-apelido");
+      innerTextFunction(chatMessageApelido_span, item.apelido);
+
+      const chatMessageItem_span = criarElementoHTML("span");
+      adicionarClasse(chatMessageItem_span, "chat-message-item");
+      innerTextFunction(chatMessageItem_span, item.mensagem);
+
+      chatMessage_div.appendChild(chatMessageApelido_span);
+      chatMessage_div.appendChild(chatMessageItem_span);
+      fragmento.appendChild(chatMessage_div);
+    }
+  );
+
+  return fragmento;
+}
+
+function atualizarHTML() {
+  adicionarElementoFilhoAoElementoPai(
+    chatMessages,
+    formatarMensagens()
+  );
+
+  limparCampo();
+
+  adicionarFocoNoCampo();
+}
+
 function commitMessageClickHandler() {
-  const apelido = 'Leo';
+  const apelido = "Leo";
   const message = messageInput.value.trim();
 
-  if (message === '') {
-    alert('Campo mensagem em vazio, favor preencher!');
+  if (message === "") {
+    alert("Campo mensagem em vazio, favor preencher!");
     limparCampo();
     adicionarFocoNoCampo();
     return;
@@ -84,7 +97,9 @@ function commitMessageClickHandler() {
 }
 
 function executarProgramaPrincipal() {
-  messageCommit.addEventListener('click', commitMessageClickHandler);
+  messageCommit.addEventListener(
+    "click", commitMessageClickHandler
+  );
 }
 
 /* - - - - - - - - - programa principal - - - - - - - - - */
@@ -93,11 +108,11 @@ executarProgramaPrincipal();
 // --------------------------------
 // Não remover estas linhas
 // --------------------------------
-// module.exports =
-// {
-//   adicionarMensagem,
-//   formatarMensagens,
-//   atualizarHTML,
-//   commitMessageClickHandler
-// };
+module.exports =
+{
+  adicionarMensagem,
+  formatarMensagens,
+  atualizarHTML,
+  commitMessageClickHandler
+};
 // --------------------------------
