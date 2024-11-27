@@ -1,14 +1,21 @@
 // Calcula o perímetro e a área de um retângulo
 function calcularRetangulo(retangulo) {
     // Sua implementação aqui
+
+    if (retangulo.altura === retangulo.largura) {
+        return "As medidas não são condizentes a um retângulo";
+    }
+
     // P = 2(b+h)
     const perimetro = 2 * (retangulo.largura + retangulo.altura);
 
     // A = b*h
     const area = retangulo.largura * retangulo.altura;
 
-    console.log(`Perímetro..: ${perimetro.toFixed(2)}cm²`);
-    console.log(`Área.......: ${area.toFixed(2)}cm²`);
+    return {
+        perimetro, area,
+    };
+
 }
 
 const retangulo = {
@@ -17,6 +24,7 @@ const retangulo = {
 };
 
 // calcularRetangulo(retangulo);
+// calcularRetangulo({ largura: 2.3, altura: 3.4, });
 
 // Verifica se uma pessoa é maior de idade
 function ehAdulto(pessoa) {
