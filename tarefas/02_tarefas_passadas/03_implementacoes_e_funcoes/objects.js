@@ -15,7 +15,6 @@ function calcularRetangulo(retangulo) {
     return {
         perimetro, area,
     };
-
 }
 
 const retangulo = {
