@@ -1,7 +1,7 @@
 // Soma dos números inteiros de 1 a n
 function somaNumeros(n) {
-  if (n === 0) {
-    return 0;
+  if (n === 1) {
+    return 1;
   }
   else {
     return n + somaNumeros(n - 1);
