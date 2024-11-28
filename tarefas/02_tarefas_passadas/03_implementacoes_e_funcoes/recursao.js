@@ -12,19 +12,19 @@ function somaNumeros(n) {
 
 // Verifica se um número é PAR
 function ehPar(numero) {
-  if (isNaN(number)) {
+  if (isNaN(numero)) {
     return;
   }
 
-  if (number === 0) {
+  if (numero === 0) {
     return true;
   }
 
-  if (number === 1) {
+  if (numero === 1) {
     return false;
   }
 
-  return ehPar(number - 2);
+  return ehPar(numero - 2);
 }
 // ehPar(numero);
 
