@@ -30,8 +30,8 @@ function filtrarPares(numeros3) {
 
     return numerosPares;
 }
-
 const numeros3 = [1, 2, 3, 4, 5];
 filtrarPares(numeros3);
+
 
 module.exports = { dobrarNumeros, somarValores, filtrarPares };

@@ -16,14 +16,12 @@ function calcularRetangulo(retangulo) {
         perimetro, area,
     };
 }
-
 const retangulo = {
     largura: 2.3,
     altura: 3.4,
 };
+calcularRetangulo(retangulo);
 
-// calcularRetangulo(retangulo);
-// calcularRetangulo({ largura: 2.3, altura: 3.4, });
 
 // Verifica se uma pessoa é maior de idade
 function ehAdulto(pessoa) {
@@ -39,30 +37,27 @@ function ehAdulto(pessoa) {
         mensagem = 'Não é maior de idade.';
     }
 
-    console.log(`Mensagem: ${mensagem}`);
+    return `Mensagem: ${mensagem}`;
 }
-
-
 const pessoa = {
     nome: 'John',
     idade: 25,
     cidade: 'New York',
 };
-// ehAdulto(pessoa);
+ehAdulto(pessoa);
 
 
 // Concatena os valores de um objeto em uma string
 function concatenaValores(obj) {
     // Sua implementação aqui
     const mensagem = `A linguagem ${obj.linguagem} é regulada pela ${obj.especificacao}.`;
-    console.log(mensagem);
+    return mensagem;
 }
-
 const obj = {
     linguagem: 'JavaScript',
     especificacao: 'ECMAScript',
 };
-
 concatenaValores(obj);
+
 
 module.exports = { calcularRetangulo, ehAdulto, concatenaValores };

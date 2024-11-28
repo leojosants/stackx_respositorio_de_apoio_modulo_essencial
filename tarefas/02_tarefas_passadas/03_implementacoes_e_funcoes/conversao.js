@@ -8,6 +8,7 @@ function convertToInt(string) {
 // console.log(typeof convertToInt(3));
 // console.log(typeof convertToInt('3'));
 
+
 // Converte um número inteiro para uma string
 function convertToString(number) {
     // Sua implementação aqui
@@ -17,6 +18,7 @@ function convertToString(number) {
 // console.log(typeof convertToString());
 // console.log(typeof convertToString(3));
 // console.log(typeof convertToString('3'));
+
 
 // Converte um valor para um booleano
 function convertToBoolean(value) {
@@ -34,5 +36,6 @@ function convertToBoolean(value) {
 // console.log(typeof convertToBoolean(0));
 // console.log(convertToBoolean(1));
 // console.log(convertToBoolean(0));
+
 
 module.exports = { convertToInt, convertToString, convertToBoolean };

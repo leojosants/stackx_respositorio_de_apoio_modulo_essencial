@@ -41,6 +41,7 @@ function retornaDiaSemana(number) {
     return `Número.........: ${number} \nDia da semana..: ${diaSemana}`;
 }
 
+
 // Retorna o preço do produto com base no código de produto
 function retornaPrecoProduto(code) {
     // Sua implementação aqui
@@ -72,6 +73,7 @@ function retornaPrecoProduto(code) {
     return `Código.: ${code.toUpperCase()} \nPreço..: R$${preco.toFixed(2)}`;
 }
 
+
 // Retorna a categoria do produto com base no tipo de produto
 function retornaCategoriaProduto(type) {
     // Sua implementação aqui
@@ -98,5 +100,6 @@ function retornaCategoriaProduto(type) {
 
     return `Produto....: ${type.toUpperCase()} \nCategoria..: ${categoria.toUpperCase()}`;
 }
+
 
 module.exports = { retornaDiaSemana, retornaPrecoProduto, retornaCategoriaProduto };
