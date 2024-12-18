@@ -18,7 +18,10 @@ function programaPrincipal() {
     leitor.question('\nDigite o caminho do arquivo [exemplo.txt]: ', (caminho_do_arquivo) => {
 
         // otimizado trecho
-        const caminho_tratado = caminho_do_arquivo.replaceAll(' ', '').toLowerCase().trim();
+        const caminho_tratado = caminho_do_arquivo.replaceAll(" ", "")
+            .replace(/[0-9]/g, '')
+            .toLowerCase()
+            .trim();
 
         // - Quanto tempo demorou a execução;
         console.time('-> Quanto tempo demorou a execução');
@@ -95,12 +98,16 @@ function solicitarPerguntaNovaExecucao() {
     leitor.question('\nQuer executar novamente [S/N]? ', (resposta) => {
 
         // otimizado trecho
-        const resposta_tratada = resposta.replaceAll(' ', '').toUpperCase().trim();
+        const resposta_tratada = resposta.replaceAll(" ", "")
+            .replace(/[0-9]/g, '')
+            .toUpperCase()
+            .trim()
+            .charAt(0);
 
-        if (resposta_tratada === 'S' || resposta_tratada === 'SIM') {
+        if (resposta_tratada === 'S') {
             eventEmitter.emit('recebeuRespostaSim');
         }
-        else if (resposta_tratada === 'N' || resposta_tratada === 'NAO' || resposta_tratada === 'NÃO') {
+        else if (resposta_tratada === 'N') {
             eventEmitter.emit('recebeuRespostaNao');
         }
         else {

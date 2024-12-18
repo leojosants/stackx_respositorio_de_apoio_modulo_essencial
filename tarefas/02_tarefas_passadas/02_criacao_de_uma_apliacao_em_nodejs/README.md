@@ -31,3 +31,9 @@ npm init --y
 ```node
 node index.js
 ```
+
+- Opção para executar programa em modo ```whatch```
+
+```node
+npm run start
+```
